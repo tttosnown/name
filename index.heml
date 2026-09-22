@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh‑CN">
+<head>
+<meta charset="UTF‑8" />
+<meta name="viewport" content="width=device‑width, initial‑scale=1.0"/>
+<title>重大建筑学真题刷题｜填空选择判断</title>
+<style>
+*{box‑sizing:border‑box;margin:0;padding:0;}
+body{font‑family:system‑ui,‑apple‑system,Segoe UI,Roboto,sans‑serif;background:#f3f4f6;padding:16px;max‑width:920px;margin:0 auto;}
+.container{background:#fff;border‑radius:12px;padding:24px;box‑shadow:0 2px 14px rgba(0,0,0,.12);}
+h1{text‑align:center;font‑size:20px;color:#1f2937;margin‑bottom:16px;}
+.select‑wrap{margin‑bottom:14px;}
+#paperSelect{padding:8px 10px;font‑size:15px;border‑radius:6px;border:1px solid #cbd5e1;}
+.info‑bar{display:flex;justify‑content:space‑between;font‑size:14px;color:#4b5563;margin‑bottom:12px;}
+.progress{height:8px;background:#e5e7eb;border‑radius:4px;margin‑bottom:18px;}
+.progress‑bar{height:100%;background:#2563eb;border‑radius:4px;width:0%;transition:.3s;}
+.card{border:1px solid #e5e7eb;border‑radius:8px;padding:22px;min‑height:240px;margin‑bottom:16px;}
+.q‑title{font‑size:16px;line‑height:1.7;margin‑bottom:16px;color:#111827;}
+.option‑item{padding:11px 14px;border:1px solid #d1d5db;border‑radius:7px;margin:9px 0;cursor:pointer;transition:.2s;font‑size:15px;}
+.option‑item:hover{background:#f3f4f6;}
+.fill‑input{width:100%;padding:11px;border:1px solid #cbd5e1;border‑radius:7px;font‑size:15px;margin:10px 0;}
+.answer‑wrap{margin‑top:16px;padding:14px;background:#eff6ff;border‑radius:8px;display:none;}
+.btns{display:flex;gap:12px;margin‑top:10px;}
+button{flex:1;padding:11px;border:none;border‑radius:8px;font‑size:15px;cursor:pointer;}
+#showAnsBtn{background:#2563eb;color:#fff;}
+#prevBtn{background:#64748b;color:#fff;}
+#nextBtn{background:#059669;color:#fff;}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>重庆大学建筑真题刷题（填空｜单选｜判断）</h1>
+<div class="select‑wrap">
+<label>选择试卷：</label>
+<select id="paperSelect">
+<option value="p2022">2022 355建筑学基础</option>
+<option value="p2021">2021 355建筑学基础</option>
+<option value="p2020">2020 355建筑学基础</option>
+<option value="p845‑2016">2016 845建筑技术工程理论</option>
+</select>
+</div>
+<div class="info‑bar">
+<span id="pageInfo">第 1 / 0 题</span>
+<span id="scoreText">得分：0</span>
+</div>
+<div class="progress"><div class="progress‑bar" id="bar"></div></div>
+<div class="card">
+<div class="q‑title" id="qDom"></div>
+<div id="optBox"></div>
+<div class="answer‑wrap" id="ansWrap">
+<div><b>✅正确答案：</b><span id="ansContent"></span></div>
+<div style="margin‑top:8px;"><b>📖解析：</b><span id="expContent"></span></div>
+</div>
+</div>
+<div class="btns">
+<button id="prevBtn">上一题</button>
+<button id="showAnsBtn">查看答案</button>
+<button id="nextBtn">下一题</button>
+</div>
+</div>
+
+<script>
+const paperData={
+p2022:[
+{"type":"fill","q":"1.中华人民共和国注册建筑师是经考试、考核认定取得中华人民共和国注册建筑师执业资格证书，或者经资格互认方式取得建筑师互认资格证，并注册取得中华人民共和国注册建筑师( )和( )，从事建筑设计及相关业务活动的专业技术人员。","ans":"执业证书、执业印章","desc":"注册建筑师注册取得执业证书与执业印章。"},
+{"type":"fill","q":"2.经历结构性经济危机，并且人口规模在1万以上的人口密集城市区域，人口流失超过2年的城市，被称为( )。","ans":"收缩城市","desc":"收缩城市：人口持续流失的城市区域。"},
+{"type":"fill","q":"3.我国防火规范规定，()楼梯应用甲级防火门。","ans":"建筑高度大于100m的防烟楼梯","desc":"普通防烟楼梯乙级；大于100m超高层防烟楼梯间用甲级防火门。"},
+{"type":"fill","q":"4.建筑按构造部分组成可以分为()、()、()、()、()、()、()这七类。","ans":"基础、墙和柱、楼地层、饰面装修、楼梯和电梯、屋顶、门窗","desc":"建筑七大构造组成。"},
+{"type":"fill","q":"5.最早在石器时期的的木干阑建筑是()。","ans":"浙江余姚河姆渡遗址","desc":"河姆渡，干阑木构。"},
+{"type":"fill","q":"6.高层建筑按结构可以分为( )、()、()三种。","ans":"框架结构、剪力墙结构、筒体结构","desc":"高层三大结构体系。"},
+{"type":"fill","q":"7.公认为是文艺复兴第一个代表作的是()。","ans":"佛罗伦萨主教堂穹顶","desc":"布鲁内莱斯基，佛罗伦萨主教堂穹顶，文艺复兴报春花。"},
+{"type":"fill","q":"8.赖特草原式住宅的代表作是()。","ans":"罗比住宅（罗比之家）","desc":"罗比住宅，草原住宅代表。"},
+{"type":"fill","q":"9.基底面积总和除以规划建设用地面积被称为()。","ans":"建筑密度","desc":"建筑密度=总基底面积/用地面积；容积率=总建筑面积/用地面积。"},
+{"type":"fill","q":"10.按《民用建筑防火规范》的规定，消防控制室宜布置在建筑物的( )。","ans":"首层或者地下一层","desc":"消防控制室宜首层或地下一层，直通室外。"},
+{"type":"fill","q":"11.车流量较多基地，其道路出口距城市道路红线交叉点应大于()m。","ans":"70","desc":"基地出口距离交叉口大于等于70米。"},
+{"type":"fill","q":"12.形式随从功能是( )提出的口号。","ans":"路易斯·沙利文","desc":"Louis Sullivan，形式追随功能。"},
+{"type":"fill","q":"13.宋，材分制度以()区分等级，清，以()区分等级。","ans":"材；斗口","desc":"宋《营造法式》材份制；清《工程做法则例》斗口制。"},
+{"type":"fill","q":"14.《建筑的复杂性与矛盾性》的作者是()。","ans":"罗伯特·文丘里","desc":"文丘里，后现代理论著作。"},
+{"type":"fill","q":"15.需要从基础到屋顶的构件全部断的构造缝是()。","ans":"沉降缝","desc":"沉降缝：基础至屋顶全部断开；伸缩缝基础不用断开。"},
+{"type":"fill","q":"16.正厅当中容易出现的声缺陷是( )、()、()。","ans":"回声、颤动回声、声聚焦","desc":"厅堂声学三大常见缺陷。"},
+{"type":"fill","q":"17.在同一张地图上，等高线间距与坡度成( )比。","ans":"反","desc":"坡度越大，等高线越密，间距越小；反比关系。"},
+{"type":"fill","q":"18.满足残疾人、老年人等需求的一系列建筑设计叫()。","ans":"无障碍设计","desc":"无障碍设计。"},
+{"type":"fill","q":"19.某月、季、年、数年某一方向来风次数占同期观测风向发生总次数的百分比，即称该方位的()。","ans":"风向频率","desc":"风玫瑰：风向频率。"},
+{"type":"single","q":"选择题1.武汉疫情时第一座大规模临时医院是()","options":["A.火神山医院","B.雷神山医院","C.小汤山医院","D.北京协和医院"],"right":0,"ans":"A","desc":"火神山为武汉疫情第一座大型临时医院；小汤山为非典时期。"},
+{"type":"single","q":"选择题2.非高层建筑供普通消防车使用和重型消防车的回车场分别不应小于()","options":["A.12m×12m,18m×18m","B.10m×10m,15m×15m","C.12m×12m,15m×15m","D.15m×15m,18m×18m"],"right":0,"ans":"A","desc":"普通消防车回车场12×12；重型18×18；高层建筑回车场15×15。"},
+{"type":"single","q":"选择题3.马斯洛需求层次理论不包括()","options":["A.生理需求","B.安全需求、自我实现需求","C.感情与归属需求、尊重与受人尊重需求","D.信任需求"],"right":3,"ans":"D","desc":"马斯洛：生理、安全、归属与爱、尊重、自我实现，无信任需求。"},
+{"type":"single","q":"选择题4.贝聿铭建筑不包括()","options":["A.阿联酋卢浮宫","B.苏州博物馆","C.香山饭店","D.香港中银大厦"],"right":0,"ans":"A","desc":"阿布扎比卢浮宫设计者让·努维尔，不是贝聿铭。"},
+{"type":"single","q":"选择题6.柯布西耶的国籍是()","options":["A.德国","B.美国","C.法国","D.瑞士"],"right":3,"ans":"D","desc":"柯布西耶出生瑞士，后入法国籍；考研常考原籍瑞士。"},
+{"type":"judge","q":"判断题1.简壳是薄壳结构的一种常见形式。","rightAns":true,"ans":"正确","desc":"简壳（柱面薄壳）属于单曲面薄壳。"},
+{"type":"judge","q":"判断题2.圣索菲亚大教堂是拜占庭建筑。","rightAns":true,"ans":"正确","desc":"圣索菲亚，拜占庭代表，帆拱技术。"}
+],
+p2021:[
+{"type":"fill","q":"1.某城市按1:1.5的日照间距在平地上南北向布置两栋5层住宅，已知住宅高度为15.15m，室内外高差为0.15m，一层窗台高度为1.0m，此两栋住宅的最小日照间距为()m。","ans":"21","desc":"日照间距计算，真题答案21m。"},
+{"type":"fill","q":"2.对于穿越高层建筑的消防车道，要求高不超过()m，宽不超过()m。","ans":"4；4","desc":"穿越高层建筑消防车道净高净宽不应小于4m。"},
+{"type":"fill","q":"3.根据防火规范，公建防烟前室共用时为()m²。","ans":"10","desc":"公共建筑合用前室面积不小于10㎡。"},
+{"type":"fill","q":"4.封闭楼梯间疏散方向朝()方向开。","ans":"疏散","desc":"疏散门向疏散方向开启。"},
+{"type":"fill","q":"5.学校运动场地运动场应按()方向布置。","ans":"南北","desc":"运动场长轴宜南北向，避免阳光直射运动员眼睛。"},
+{"type":"fill","q":"6.雅典卫城中帕提农神庙是()风格的建筑，其中()柱式刚劲雄健。巴黎圣母院是()建筑风格。","ans":"古希腊；多立克；哥特式","desc":"帕提农神庙多立克为主；巴黎圣母院哥特建筑。"},
+{"type":"fill","q":"8.满足人类生活五大需求()、()、()、()、()。","ans":"生理需求、安全需求、感情与归属需求、尊重需求、自我实现需求","desc":"马斯洛五层需求。"},
+{"type":"fill","q":"9.工程建设标准按标准约束性可分为()、()。","ans":"强制性标准；推荐性标准","desc":"标准分为强制、推荐两类。"},
+{"type":"fill","q":"10.同一张地图上等高线与坡度成()。","ans":"反比","desc":"等高线越密坡度越大，间距‑坡度反比。"},
+{"type":"fill","q":"11.维特鲁威在()一书中第一次阐述了建筑的三个基本要素:()、()、()。","ans":"《建筑十书》；实用；坚固；美观","desc":"维特鲁威建筑三要素：实用、坚固、美观。"},
+{"type":"fill","q":"12.在住宅建筑中，设有轮椅坡道的住房称为()。","ans":"无障碍住宅","desc":"无障碍住宅，满足轮椅通行。"},
+{"type":"fill","q":"13.广州中山纪念堂是()设计的。","ans":"吕彦直","desc":"吕彦直设计中山纪念堂。"},
+{"type":"fill","q":"14.由朱启铃先生创办的(),为中国古建筑做出了巨大贡献。","ans":"中国营造学社","desc":"中国营造学社，朱启钤创办。"},
+{"type":"fill","q":"15.营造法式采用了()制。","ans":"材分","desc":"宋营造法式材分模数制。"},
+{"type":"fill","q":"16.高层筒体的结构可分为()、()。","ans":"实腹式；空腹式","desc":"筒体分实腹筒、空腹筒。"},
+{"type":"fill","q":"17.南方干阑式建筑是由()发展而来，北方木骨泥墙建筑是由()发展而来。","ans":"巢居；穴居","desc":"南巢居，北穴居。"},
+{"type":"fill","q":"18.起居室最小面积()m²。","ans":"10","desc":"住宅起居室最小面积10㎡。"},
+{"type":"fill","q":"19.宋代模数制度采用()制。","ans":"材分","desc":"宋代材分，清代斗口。"},
+{"type":"fill","q":"20.消防楼梯和电梯合用前室最小面积()m²。","ans":"10","desc":"公建合用前室不小于10㎡。"},
+{"type":"single","q":"1.现存中国最老的木构建筑是()","options":["A.应县木塔","B.南禅寺大殿","C.佛光寺大殿","D.圣母殿"],"right":1,"ans":"B","desc":"南禅寺大殿我国现存最早木构。"},
+{"type":"single","q":"2.最早完成整体城市设计的规划是()","options":["A.巴黎","B.昌迪加尔","C.纽约","D.伦敦"],"right":1,"ans":"B","desc":"柯布西耶昌迪加尔是完整整体城市设计。"},
+{"type":"single","q":"3.日本代代木体育场是()结构","options":["A.网格","B.悬索","C.折板","D.桁架"],"right":1,"ans":"B","desc":"代代木体育馆悬索结构。"},
+{"type":"single","q":"4.高层民用建筑防火规范对综合楼的定义为()","options":["A高层商业","B.高层办公楼","C.二种及二种以上的公建","D.高层住宅"],"right":2,"ans":"C","desc":"综合楼两种以上公共建筑功能组合。"},
+{"type":"single","q":"5.一般建设项目场地选择时，地面坡度不宜小于( ),并不宜大于( ).","options":["A. 0.2%;25%","B.0.2%;15%","C.0.5%;25%","D.0.5%;15%"],"right":0,"ans":"A","desc":"场地最小坡度0.2%利于排水，不宜大于25%。"},
+{"type":"single","q":"6.只设置一个双车道疏散出入口的地下汽车库最大允许停车位是( )辆","options":["A.50","B.70","C.80","D.100"],"right":3,"ans":"D","desc":"双车道出入口最大100辆；单车道50辆。"},
+{"type":"single","q":"7.在建筑变形缝中,()缝需要将基础至顶全部断开","options":["A.沉降缝","B.防震缝","C.伸缩缝","D.全都要"],"right":0,"ans":"A","desc":"沉降缝基础到屋顶全部断开；伸缩缝基础不断开。"},
+{"type":"single","q":"8.住宅门户、厨房、卫生间门最小洞口尺寸是()、()、()","options":["A.900;800;700","B.1000;900;700","C.1000;800;700","D.900;800;800"],"right":2,"ans":"C","desc":"入户1000，厨房800，卫生间700。"},
+{"type":"single","q":"9.方便残疾人使用的城市道路和建筑物设计规范主要针对()","options":["A.智力残疾","B.听力残疾","C.语言残疾","D.下肢残疾者;视力残疾者"],"right":3,"ans":"D","desc":"无障碍主要针对肢体、视力残障。"},
+{"type":"single","q":"10.占地2000m²三层建筑，每层800m²，使用面积系数为80%，容积率为()","options":["A.1.2","B.1.1","C.1.3","D.1.0"],"right":0,"ans":"A","desc":"容积率=总建筑面积/用地面积=2400/2000=1.2，使用面积系数干扰项。"},
+{"type":"single","q":"11.建筑控制线后退道路红线的用地不能提供下列哪一项用地()","options":["A.七层建筑","B.六层建筑","C.五层建筑","D.四层建筑"],"right":0,"ans":"A","desc":"退红线地带不允许建永久性建筑，七层属于永久建筑。"},
+{"type":"single","q":"12.计入建筑主体控制高度部分为()","options":["A.设备高度","B.檐口","C.女儿墙","D.楼梯间"],"right":1,"ans":"B","desc":"檐口计入建筑控制高度。"},
+{"type":"single","q":"13.供普通消防车和大型消防车回车场不小于()","options":["A.12m×12m;18m×18m","B.15m×15m;12m×12m","C.18m×18m;15m×15m","D.18m×18m;12m×12m"],"right":0,"ans":"A","desc":"普通12×12，重型18×18。"},
+{"type":"single","q":"14.阿尔托代表建筑()","options":["A.罗比之家","B.流水别墅","C.玛丽亚别墅","D.汉纳住宅"],"right":2,"ans":"C","desc":"玛丽亚别墅阿尔瓦阿尔托代表作。"},
+{"type":"single","q":"15.我国抗震设防规定()开设","options":["A.5级","B.6级及6级以上抗震设防","C.7级","D.7级及7级以上抗震设防"],"right":1,"ans":"B","desc":"6度及以上必须抗震设防。"},
+{"type":"single","q":"16.西尔斯大厦采用()结构","options":["A.框架‑剪力墙结构","B.筒中筒","C.核心筒‑框架体系","D.束筒"],"right":3,"ans":"D","desc":"西尔斯（威利斯）大厦束筒结构。"},
+{"type":"single","q":"17.同时通过一辆轮椅和一个人的宽度为()","options":["A.1.3m","B.1.8m","C.1.2m","D.1.5m"],"right":3,"ans":"D","desc":"轮椅加行人通行宽度1.5m。"},
+{"type":"single","q":"18.中央商务区的缩写是()","options":["A.TOD","B. CBD","C.CCD","D. CTD"],"right":1,"ans":"B","desc":"CBD中央商务区；TOD公共交通导向开发。"},
+{"type":"single","q":"19.地下室环境潮湿，墙体不应采用()材料","options":["A.钢筋混凝土","B.石材","C.混凝土","D.石膏"],"right":3,"ans":"D","desc":"石膏不耐水，潮湿地下室禁用。"},
+{"type":"single","q":"20.影响屋面排水坡度大小的主要因素是()","options":["A.屋面排水区域划分","B.建筑防水要求","C.防水材料的选用","D.年降雨量和防水材料尺寸大小"],"right":3,"ans":"D","desc":"降雨量、防水材料尺寸决定排水坡度。"},
+{"type":"single","q":"21.高层建筑每层楼面积不大于()m²时，可设一台消防电梯","options":["A.1500","B.1200","C.1300","D.1000"],"right":0,"ans":"A","desc":"高层≤1500㎡可一台消防电梯。"},
+{"type":"single","q":"22.全玻璃幕墙中，其开启窗的形式为()","options":["A.下悬","B.上悬","C.中悬","D.都可以"],"right":1,"ans":"B","desc":"全玻幕墙开启用上悬窗。"},
+{"type":"single","q":"23.轻钢龙骨石膏板隔墙是()墙体","options":["A.砖","B.混凝土","C.骨架隔墙","D.钢结构"],"right":2,"ans":"C","desc":"轻钢龙骨石膏板属于骨架隔墙。"},
+{"type":"single","q":"24.坡屋顶挂瓦时，平瓦与相邻平瓦的搭接方式通常采用()咬口。","options":["A.顺水搭接","B.上下搭接","C.左右咬合","D.叠缝咬口"],"right":3,"ans":"D","desc":"平瓦叠缝咬口搭接。"},
+{"type":"single","q":"25.框架结构的优点是()","options":["A.平面布置限制较多","B.适用于高烈度地震区","C.侧向刚度小，水平位移大","D.抗震性能强、施工标准程度高、结构整体性好，构件也方便定型"],"right":3,"ans":"D","desc":"框架优点施工标准化，构件预制方便。"},
+{"type":"single","q":"27.中国在2000年设立的建筑奖是()","options":["A.梁思成奖","B.鲁班奖","C.国家优质工程奖","D.詹天佑奖"],"right":0,"ans":"A","desc":"梁思成奖2000设立。"},
+{"type":"single","q":"28.下列不是齐康设计的建筑是()","options":["A.宁波博物馆","B.陕西博物馆","C.河南博物馆","D.周恩来梅园故居"],"right":1,"ans":"B","desc":"陕博张锦秋；宁波博物馆王澍。"},
+{"type":"single","q":"29.用地1500m²，3F，每层面积1200m²，使用面积75%，容积率为()","options":["A.2.1","B.2.2","C.2.3","D.2.4"],"right":3,"ans":"D","desc":"容积率=3600/1500=2.4。"},
+{"type":"single","q":"30.仅设一个消防疏散出入口的地下车库最多可停的车位数()","options":["A.100","B.200","C.80","D.50"],"right":3,"ans":"D","desc":"单疏散出口地下车库最多50辆。"},
+{"type":"single","q":"31.密斯凡德罗的设计作品()","options":["A.玛丽亚别墅","B.巴塞罗那德国会馆","C.朗香教堂","D.流水别墅"],"right":1,"ans":"B","desc":"巴塞罗那馆密斯凡德罗。"},
+{"type":"judge","q":"1.托儿所、幼儿园合理服务半径300米。","rightAns":true,"ans":"正确","desc":"托幼服务半径宜300m。"},
+{"type":"judge","q":"2.墙面至扶手中心线的距离是楼梯净宽。","rightAns":true,"ans":"正确","desc":"楼梯净宽定义，靠墙到扶手中心线。"},
+{"type":"judge","q":"3.道路红线是指城市道路用地与建筑用地之间的分界线。","rightAns":true,"ans":"正确","desc":"道路红线为道路用地控制线。"},
+{"type":"judge","q":"4.正在推广的建筑师终生负责制，是针对所有建筑师。","rightAns":false,"ans":"错误","desc":"建筑师负责制针对项目负责人，不是全部建筑师。"},
+{"type":"judge","q":"5.2015年中央城市工作会议，是建国以来第四次城市工作会议。","rightAns":true,"ans":"正确","desc":"2015为第四次中央城市工作会议。"},
+{"type":"judge","q":"6.形式追随功能是路易斯沙利文提出的。","rightAns":true,"ans":"正确","desc":"芝加哥学派沙利文。"},
+{"type":"judge","q":"7.透平机车间是格罗斯皮乌设计的。","rightAns":false,"ans":"错误","desc":"透平机车间彼得贝伦斯。"},
+{"type":"judge","q":"8.当建筑设计不考虑设衬墙时，可在每层楼板外沿设置耐火极限不小于1h，高度不小于0.8m的实体墙裙或防火玻璃墙裙。","rightAns":true,"ans":"正确","desc":"玻璃幕墙防火裙墙规范条文。"}
+],
+p2020:[
+{"type":"fill","q":"2.地下室外端防水层在室外地坪以上的设防高度，不应小于()mm。","ans":"500","desc":"地下室防水层高出室外地坪不少于500mm。"},
+{"type":"fill","q":"3.人眼视网膜感光细胞中，负责感色和明视觉的是()细胞，负责感光和暗视觉的是()细胞。","ans":"视锥；视杆","desc":"视锥明视觉辨色彩；视杆暗视觉感光。"},
+{"type":"fill","q":"4.被称为现代建筑的旗手是()。","ans":"勒·柯布西耶","desc":"柯布西耶被称作现代建筑旗手。"},
+{"type":"fill","q":"5.中国五大建筑师:杨廷宝、梁思成、童寯、()、刘敦桢。","ans":"吕彦直","desc":"建筑五宗师：杨廷宝，梁思成，童寯，吕彦直，刘敦桢。"},
+{"type":"fill","q":"6.雅典卫城主体建筑为()其外围主体柱式采用的是()。","ans":"帕提农神庙；多立克式","desc":"帕提农神庙主要采用多立克柱式。"},
+{"type":"fill","q":"7.在风玫瑰图中，风向的表示方向是()。","ans":"从外吹向中心","desc":"风玫瑰，风从外面吹向圆心。"},
+{"type":"fill","q":"8.楼梯梯段结构下缘至踏步前缘之间的垂直净空高度，不应小于()mm。","ans":"2200","desc":"楼梯下部净高≥2200mm。"},
+{"type":"fill","q":"9.建筑防火规范规定，两个相邻安全出口或疏散口最近边缘之间的水平距离，不应小于()m。","ans":"5","desc":"安全出口间距≥5米。"},
+{"type":"fill","q":"10.高层民用建筑中，一个防分区的最大允许建筑面积为()㎡，设置自动喷水灭火系统时，可增加()倍，此时一个防火分区最大面积可达()㎡。","ans":"1500；1；3000","desc":"高层防火分区1500㎡，自喷加倍。"},
+{"type":"fill","q":"11.中国现存规模最大、整体保存完整的唐代木构建筑是()。","ans":"佛光寺东大殿","desc":"佛光寺东大殿唐代木构。"},
+{"type":"fill","q":"12.建筑内部的交通联系空间中，水平方向的交通方式称为()，垂直方向的交通方式称为()。","ans":"走道；楼梯/电梯","desc":"水平走道，垂直楼梯电梯。"},
+{"type":"fill","q":"13.根据《中华人民共和国注册建筑师条例》，我国注册建筑师的资质等级分为()和()两种。","ans":"一级注册建筑师；二级注册建筑师","desc":"我国注册建筑师分一级、二级。"},
+{"type":"single","q":"1.只设一个双车道救出入口的地下车库最大允许停车数量()","options":["A.50","B.100","C.200","D.150"],"right":1,"ans":"B","desc":"双车道出入口地下车库最多100辆。"},
+{"type":"single","q":"2.入户门厨房门卫生间洞口最小尺寸()","options":["A. 1100, 800, 700","B.1000, 800,600","C.1000,800, 700","D. 1100, 800,600"],"right":2,"ans":"C","desc":"入户1000，厨房800，卫生间700。"},
+{"type":"single","q":"4.城市噪声环境中影响最大的噪声源是()","options":["A.社会生活噪声","B.建筑施工噪声","C.工业噪声","D.交通噪声"],"right":3,"ans":"D","desc":"城市最主要噪声源交通噪声。"},
+{"type":"single","q":"6.纯框架属于()","options":["A.混合结构体系","B.刚性结构体系","C.柔性结构体系","D.钢结构体系"],"right":2,"ans":"C","desc":"框架侧向刚度小属于柔性结构。"},
+{"type":"single","q":"7.西尔斯大厦采用()","options":["A.筒中筒结构","B.束筒结构","C.单筒结构","D.框架‑核心筒"],"right":1,"ans":"B","desc":"威利斯大厦束筒。"},
+{"type":"single","q":"9.下列属于张锦秋代表作的是()","options":["A.苏州火车站","B.拉萨火车站","C.泰山桃花峪游人中心","D.大唐芙蓉园"],"right":3,"ans":"D","desc":"大唐芙蓉园张锦秋。"},
+{"type":"single","q":"10.赖特的作品()","options":["A.哈佛研究生中心","B.西门子住宅","C.流水别墅","D.英国平顿乡村学院"],"right":2,"ans":"C","desc":"流水别墅赖特。"},
+{"type":"single","q":"11.内尔维被称为()","options":["A.混凝土诗人","B.现代建筑的旗手","C.人情化建筑理论的倡导者","D.清水混凝土的诗人"],"right":0,"ans":"A","desc":"奈尔维——混凝土诗人。"},
+{"type":"single","q":"13.地下室下面不宜采用哪一种防水()","options":["A.沥青卷材防水","B.防水混凝土防水","C.水泥砂浆抹灰防水","D.弹性材料防水"],"right":2,"ans":"C","desc":"单纯水泥砂浆抹灰不能作为主体地下室防水。"},
+{"type":"single","q":"14.下列关于吊顶正确的是()","options":["A.主龙骨间距通常为300mm‑500mm，次龙骨间距为1000mm左右","B.主龙骨是吊顶的主要承重结构，间距通常为1000mm左右","C.次龙骨用于承重，间距应根据吊顶是否上人而定","D.主龙骨和次龙骨的间距均固定为600mm"],"right":1,"ans":"B","desc":"主龙骨主要承重，约1000mm间距。"},
+{"type":"single","q":"15.田园城市理论提出()","options":["A.霍华德","B.勒·柯布西耶","C.简·雅各布斯","D.弗雷德里克·劳·奥姆斯特德"],"right":0,"ans":"A","desc":"霍华德田园城市。"},
+{"type":"single","q":"16.建筑十书作者()","options":["A.维特鲁威","B.阿尔伯蒂","C.米开朗基罗","D.帕拉第奥"],"right":0,"ans":"A","desc":"维特鲁威《建筑十书》。"},
+{"type":"single","q":"19.容积率的计算()","options":["A.容积率=建筑基底面积÷土地总面积","B.容积率=总建筑面积÷土地总面积","C.容积率=绿地面积÷总建筑面积","D.容积率=建筑高度÷土地周长"],"right":1,"ans":"B","desc":"容积率定义总建筑面积/用地面积。"},
+{"type":"single","q":"20.被誉为\"文艺复兴报春花\"的佛罗伦萨大教堂的设计者是()","options":["A.米开朗琪罗","B.阿尔伯蒂","C.伯鲁乃列斯基","D.帕拉第奥"],"right":2,"ans":"C","desc":"伯鲁乃列斯基设计佛罗伦萨主教堂穹顶。"},
+{"type":"judge","q":"1、装饰即罪恶是美国建筑师路斯提出的。","rightAns":false,"ans":"错误","desc":"阿道夫·路斯奥地利。"},
+{"type":"judge","q":"2、辽代应县塔是我国现存唯一的木构楼阁。","rightAns":false,"ans":"错误","desc":"独乐寺观音阁也是辽代木构楼阁，不是唯一。"},
+{"type":"judge","q":"3、特殊情况下扶梯可以作为疏散。","rightAns":false,"ans":"错误","desc":"自动扶梯不能计入疏散出口。"},
+{"type":"judge","q":"4、赖频少的声绕射能力强（低频声音绕射强）。","rightAns":true,"ans":"正确","desc":"频率越低，声波绕射能力越强。"}
+],
+"p845‑2016":[
+{"type":"single","q":"1、下列因素中，影响屋面排水坡度大小的主要因素是()。","options":["A.年降雨量和防水材料尺寸大小","B.气温高低","C.排水方式","D.挑檐长度"],"right":0,"ans":"A","desc":"降雨量、防水材料尺寸决定屋面坡度。"},
+{"type":"single","q":"2、低纬度地区天窗宜采用()。","options":["A.平天窗","B.侧面进光天窗","C.圆穹形天窗","D.锯齿形天窗"],"right":3,"ans":"D","desc":"低纬度阳光高度角大，锯齿天窗避免直射眩光。"},
+{"type":"single","q":"3、某医院地下室设置了放疗部分，该地下室防水等级应不低于()。","options":["A.I级","B.II级","C.III级","D.IV级"],"right":0,"ans":"A","desc":"放疗地下室重要场所防水一级。"},
+{"type":"single","q":"4、根据结构仿生的概念，棕榈树的树叶可看作()。","options":["A.悬索结构","B.桁架结构","C.网架结构","D.折板结构"],"right":3,"ans":"D","desc":"棕榈树叶仿生折板。"},
+{"type":"single","q":"5、北方地区外墙隔蒸汽层应设在()。","options":["A.靠温度较高的一侧","B.靠温度较低的一侧","C.靠空气间层","D.墙中部"],"right":0,"ans":"A","desc":"隔汽层设置在高温高湿一侧（室内）。"},
+{"type":"single","q":"6、在建筑的外表面中，室外综合温度最大的表面是()。","options":["A.屋顶","B.西墙","C.东墙","D.南墙"],"right":0,"ans":"A","desc":"屋顶接收太阳辐射最多，综合温度最高。"},
+{"type":"single","q":"7、在室内热环境的因素中，建筑围护结构直接影响的因素是()。","options":["A.空气温度","B.空气湿度","C.空气流速","D.壁面温度"],"right":3,"ans":"D","desc":"围护结构主要改变壁面辐射温度。"},
+{"type":"single","q":"8、封闭空气层的主要传热方式是()。","options":["A.导热","B.对流","C.辐射","D.蒸发"],"right":2,"ans":"C","desc":"封闭空气间层传热辐射占主导。"},
+{"type":"single","q":"9.下面哪一个音乐厅是由著名声学教授塞宾设计的?()","options":["A.维也纳金色大厅","B.波士顿音乐厅","C.阿姆斯特丹音乐厅","D.纽约卡内基音乐厅"],"right":1,"ans":"B","desc":"塞宾参与波士顿音乐厅声学。"},
+{"type":"single","q":"10.240mm厚砖墙(抹灰)的计权隔声量Rw一般为()?","options":["A.40","B.45","C.50","D.55"],"right":2,"ans":"C","desc":"240砖墙抹灰计权隔声约50dB。"},
+{"type":"single","q":"11.按照国际标准，混响室的容积一般应不小于()立方米?","options":["A.150","B.200","C.250","D.300"],"right":1,"ans":"B","desc":"混响室容积≥200m³。"},
+{"type":"single","q":"12.A声级采用的是()方倒置等响曲线作为计权网络所测得的声压级。","options":["A,40","B.50","C.80","D.100"],"right":0,"ans":"A","desc":"A计权模拟40方人耳听觉。"},
+{"type":"single","q":"13.对城市环境污染最严重的噪声源是()。","options":["A.社会生活噪声","B.交通噪声","C.工业噪声","D.施工噪声"],"right":1,"ans":"B","desc":"城市首要噪声源交通噪声。"},
+{"type":"single","q":"14、人视觉感光细胞中，杆体感光细胞起作用是在()。","options":["A.明视觉中","B.暗视觉中","C.中间视觉中"],"right":1,"ans":"B","desc":"杆细胞暗视觉。"},
+{"type":"single","q":"15、我国根据室外天然光年平均总照度值大小将全国划分为I、II、III、IV、V 类光气候区，重庆属于()光气候区。","options":["A.I","B.II","C.III","D.IV","E.V"],"right":4,"ans":"E","desc":"重庆V类光气候区，照度最低。"},
+{"type":"single","q":"16、以云量来表示，晴天的云量()。","options":["A、0~3级","B、8~10级"],"right":0,"ans":"A","desc":"晴天云量0‑3；阴天8‑10。"},
+{"type":"single","q":"17、根据常用的电光源发光原理，LED属于( )。","options":["A.热辐射光源","B.固体发光光源","C.气体放电光源"],"right":1,"ans":"B","desc":"LED固体发光。"},
+{"type":"single","q":"18、当黑体连续加热时，黑体温度在( )左右时呈白色。","options":["A.800~900K","B.3000K","C.5000K","D.8000~10000K"],"right":2,"ans":"C","desc":"5000K黑体白光。"}
+]
+};
+
+//dom
+const selPaper=document.querySelector("#paperSelect");
+const qDom=document.querySelector("#qDom");
+const optBox=document.querySelector("#optBox");
+const ansWrap=document.querySelector("#ansWrap");
+const ansContent=document.querySelector("#ansContent");
+const expContent=document.querySelector("#expContent");
+const pageInfo=document.querySelector("#pageInfo");
+const scoreText=document.querySelector("#scoreText");
+const bar=document.querySelector("#bar");
+const showAnsBtn=document.querySelector("#showAnsBtn");
+const prevBtn=document.querySelector("#prevBtn");
+const nextBtn=document.querySelector("#nextBtn");
+
+let currentPaperKey=selPaper.value;
+let qList=paperData[currentPaperKey];
+let currentIdx=0;
+let score=0;
+
+function resetState(){
+currentIdx=0;
+score=0;
+render();
+}
+
+function render(){
+ansWrap.style.display="none";
+optBox.innerHTML="";
+const item=qList[currentIdx];
+pageInfo.innerText=`第 ${currentIdx+1} / ${qList.length} 题`;
+scoreText.innerText=`得分：${score}`;
+bar.style.width=((currentIdx+1)/qList.length*100).toFixed(1)+"%";
+qDom.innerText=item.q;
+ansContent.innerText=item.ans;
+expContent.innerText=item.desc;
+if(item.type==="fill"){
+optBox.innerHTML=`<input class="fill‑input" placeholder="回忆答案，点查看答案核对">`;
+}else if(item.type==="single"){
+item.options.forEach((optStr,i)=>{
+const div=document.createElement("div");
+div.className="option‑item";
+div.innerText=optStr;
+optBox.appendChild(div);
+});
+}else if(item.type==="judge"){
+optBox.innerHTML=`<div class="option‑item">✅正确</div><div class="option‑item">❌错误</div>`;
+}
+}
+
+selPaper.onchange=()=>{
+currentPaperKey=selPaper.value;
+qList=paperData[currentPaperKey];
+resetState();
+};
+
+showAnsBtn.onclick=()=>{ansWrap.style.display="block";};
+
+prevBtn.onclick=()=>{
+currentIdx‑‑;
+if(currentIdx<0)currentIdx=0;
+render();
+};
+
+nextBtn.onclick=()=>{
+currentIdx++;
+if(currentIdx>=qList.length){
+alert(`✅试卷完成！一共${qList.length}题，得分：${score}`);
+resetState();
+return;
+}
+render();
+};
+
+resetState();
+</script>
+</body>
+</html>
